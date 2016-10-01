@@ -50,3 +50,22 @@ input[type="text"] {
     transform: rotate(360deg);
   }
 }
+
+found-items {
+    display:block;
+    padding-top: 12px;
+    clear: left;
+}
+found-items div {
+    width:45%;
+    float:left;
+    padding: 4px;
+}
+found-items div:nth-child(2n+3) {
+    clear: left;
+}
+.error {
+    font-weight: bold;
+    color:blue;
+    font-size: 16px;
+}
