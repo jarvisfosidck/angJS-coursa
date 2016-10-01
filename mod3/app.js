@@ -17,7 +17,13 @@
             if (matched.searchTerm.trim() === "") {
                 matched.resultMessage = "Nothing found";
             } else {
-                var promise = menuSearchService.searchResults(), d, found, x, re = new RegExp(matched.searchTerm, 'gi');
+                var promise = menuSearchService.searchResults(), d, found, x, re;
+                try {
+                    re = new RegExp(matched.searchTerm, 'gi');
+                } catch (e) {
+                    matched.resultMessage = "Invalid Search";
+                    return false;
+                }
                 promise.then( function(response) {
                     d = response.data;
                     found = [];
