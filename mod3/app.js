@@ -3,10 +3,9 @@
 
     angular.module('NarrowItDownApp', [])
     .controller('GetMatchedMenuItemsController', GetMatchedMenuItemsController)
-        .service('menuSearchService', menuSearchService)
-        .directive('foundItems', foundItemsDirective)
-        .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/menu_items.json");
-
+    .service('menuSearchService', menuSearchService)
+    .directive('foundItems', foundItemsDirective)
+    .constant('ApiBasePath', "https://davids-restaurant.herokuapp.com/menu_items.json");
 
     GetMatchedMenuItemsController.$inject = ['menuSearchService']
     function GetMatchedMenuItemsController(menuSearchService) {
@@ -18,8 +17,7 @@
             if (matched.searchTerm.trim() === "") {
                 matched.resultMessage = "Nothing found";
             } else {
-                var promise = menuSearchService.searchResults();
-                var d, found, x, re = new RegExp(matched.searchTerm, 'gi');
+                var promise = menuSearchService.searchResults(), d, found, x, re = new RegExp(matched.searchTerm, 'gi');
                 promise.then( function(response) {
                     d = response.data;
                     found = [];
