@@ -16,6 +16,7 @@
         matched.getMatchedMenuItems = function() {
             if (matched.searchTerm.trim() === "") {
                 matched.resultMessage = "Nothing found";
+                matched.found = [];
             } else {
                 var promise = menuSearchService.searchResults(), d, found, x, re;
                 try {
