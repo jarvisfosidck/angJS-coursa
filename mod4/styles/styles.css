@@ -69,3 +69,26 @@ found-items div:nth-child(2n+3) {
     color:blue;
     font-size: 16px;
 }
+body {
+    color:#FF33CC;
+    padding: 3rem;
+    background-color:#47D1FF;
+}
+body h1 {
+    color:#00F53D;
+}
+body h2 {
+    color:#CC99CC;
+}
+.foodOnMenu {
+    position: fixed;
+    top:90px;
+    left:380px;
+    color:#FFD147;
+}
+ul {
+     list-style-image: url('../somecats.jpg');
+}
+li {
+    margin: 1rem;
+}

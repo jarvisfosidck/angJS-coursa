@@ -21,27 +21,27 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
 
   // Premade list page
   .state('categories', {
-    url: '/cat',
+    url: '/categories',
     templateUrl: 'src/menuapp/templates/categories.template.html',
-    //controller: 'categoriesController as catCtrl',
+    controller: 'categoriesController as catCtrl',
     resolve: {
-      categories: ['menuappService', function () {
-        return menuappService.getAllCategories();
+      categories: ['menuDataService', function (menuDataService) {
+        return menuDataService.getAllCategories();
       }]
     }
   })
 
   // Item detail
   .state('categories.item', {
-     url: '/categories/{itemId}',
+     url: '/item/{itemId}',
     templateUrl: 'src/menuapp/templates/items.template.html',
     controller: 'ItemsController as itemCtrl',
     params: {
       itemId: null
    },
     resolve: {
-      items: ['menuappService', function (menuappService) {
-        return menuappService.getItemsForCategory(params.itemId);
+      items: ['$stateParams','menuDataService', function ($stateParams,menuDataService) {
+        return menuDataService.getItemsForCategory($stateParams.itemId);
       }]
     }
   });
