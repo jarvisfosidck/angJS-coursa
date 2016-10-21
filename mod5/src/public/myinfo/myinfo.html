@@ -1,0 +1,74 @@
+<fieldset>
+      <legend>Registration</legend>
+      <form name='regForm' novalidate>
+
+        <input type="text" name="user_first_name" placeholder="First Name"
+          ng-model="reg.user.user_first_name"
+          required
+          minlength="4"
+          ng-maxlength="10">
+          {{ reg.user.user_first_name }}
+          <span
+            ng-if="(regForm.user_first_name.$error.minlength || regForm.user_first_name.$error.required) && regForm.user_first_name.$touched">
+            First must be at least 4 characters long
+          </span>
+          <span ng-if="regForm.username.$error.maxlength && regForm.username.$touched">
+            First must not be longer than 10 characters
+          </span>
+          <br>
+
+          <input type="text" name="user_last_name" placeholder="Last Name"
+            ng-model="reg.user.user_last_name"
+            required
+            minlength="4"
+            ng-maxlength="10">
+            {{ reg.user.user_last_name }}
+            <span
+              ng-if="(regForm.user_last_name.$error.minlength || regForm.user_last_name.$error.required) && regForm.user_last_name.$touched">
+              Last Name must be at least 4 characters long
+            </span>
+            <span ng-if="regForm.user_last_name.$error.maxlength && regForm.user_last_name.$touched">
+              Last must not be longer than 10 characters
+            </span>
+            <br>
+
+        <input type="email" name="email" placeholder="Email"
+          ng-model="reg.user.email"
+          required>
+          <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+            Must be a valid email address: handle@domain format
+          </span>
+          <br>
+
+        <input type="text" name="phone" placeholder="Phone ###-###-####"
+          ng-model="reg.user.phone"
+          pattern="(\d{3})-(\d{3})-(\d{4})">
+          <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+            Phone must be in the format ###-###-####.
+          </span>
+          <br>
+
+          <input type="text" name="favorite" placeholder="Favoriate Menu Item"
+            ng-model="reg.user.favorite"
+            required
+            minlength="4"
+            ng-maxlength="10">
+            {{ reg.user.favorite }}
+            <span
+              ng-if="(regForm.favorite.$error.minlength || regForm.favorite.$error.required) && regForm.favorite.$touched">
+              Last Name must be at least 4 characters long
+            </span>
+            <span ng-if="regForm.user_last_name.$error.maxlength && regForm.user_last_name.$touched">
+              Last must not be longer than 10 characters
+            </span>
+            <br>
+
+        <button
+          ng-disabled="regForm.$invalid"
+          ng-click="reg.submit()">Submit</button>
+
+          <div style="margin-top: 10px;">
+            Form valid? {{ regForm.$valid }}
+          </div>
+      </form>
+    </fieldset>
