@@ -1,7 +1,8 @@
 <?php
 
 $fileName = "newApp";
-$main = json_decode(file_get_contents($fileName.".json"));
+$jsonSource = json_decode(file_get_contents($fileName.".json"));
+
 
 $routerAppendString = "";
 $indexAppendString = ""; //TODO setup with some library manager string for now
@@ -21,6 +22,19 @@ function appendIndex($file) {
 $map = array("appName" => $fileName);
 $mainApp = fileParse(file_get_contents("gen/main.app.js"), $map);
 file_put_contents("src/" . $fileName . ".app.js",$mainApp);
+
+$index = fileParse(file_get_contents("gen/index.html"), $map);
+file_put_contents("index.html",$index);
+
+
+foreach ($jsonSource as $k => $v) {
+    var_dump($k, $v);
+
+    //if type object then
+    //create a controller, html file and a component called $k."component"
+
+    break;
+}
 
 
 

@@ -19,7 +19,7 @@ function routeConfig ($stateProvider) {
       url: '/',
       templateUrl: 'src/public/home/home.html'
     })
-    .state('public.menu', {
+    .state('public.__ga{{menu}}ag__', {
       url: '/menu',
       templateUrl: 'src/public/menu/menu.html',
       controller: 'MenuController',
@@ -30,6 +30,6 @@ function routeConfig ($stateProvider) {
         }]
       }
     })
-    
+
 }
 })();
