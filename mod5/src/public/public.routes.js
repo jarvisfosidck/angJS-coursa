@@ -47,8 +47,23 @@ function routeConfig ($stateProvider) {
       controller: 'MyInfoController',
       controllerAs: 'myInfoCtrl',
       resolve: {
-        myInfo: ['MyInfoService', function (MyInfoService) {
-          return MyInfoService.getMyInfo();
+        favoriteItem:  ['MyInfoService', 'MenuService', function (MyInfoService, MenuService) {
+              var shortName = MyInfoService.getShortName();
+              return MenuService.getByShortName(shortName);
+          }],
+          myInfo: ['MyInfoService', function (MyInfoService) {
+            return MyInfoService.getMyInfo();
+          }]
+    }
+  })
+    .state('public.signup', {
+      url: '/signup',
+      templateUrl: 'src/public/signup/signup.html',
+      controller: 'SignUpController',
+      controllerAs: 'signupCtrl',
+      resolve: {
+        myInfoService: ['MyInfoService', function (MyInfoService) {
+          return MyInfoService;
         }]
       }
     });

@@ -3,13 +3,12 @@
 
 angular.module('public')
 .controller('MyInfoController', MyInfoController);
-console.log('before contrl');
-MyInfoController.$inject = ['myInfo'];
-function MyInfoController(myInfo) {
-    console.log('before contrl');
-
-  var $ctrl = this;
-  $ctrl.myinfoComp = myInfo;
+MyInfoController.$inject = ['myInfo','favoriteItem'];
+function MyInfoController(myInfo,favoriteItem) {
+    console.log('ctrl', myInfo,favoriteItem);
+      var $ctrl = this;
+      $ctrl.myInfo = myInfo;
+      $ctrl.favoriteItem = favoriteItem;
 }
 
 
