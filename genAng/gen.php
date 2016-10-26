@@ -31,7 +31,10 @@ foreach ($jsonSource as $k => $v) {
     var_dump($k, $v);
 
     //if type object then
-    //create a controller, html file and a component called $k."component"
+    //create a controller, save path
+    //create a component save path
+    //create html file with comments to file paths
+    //make sure to use angular in creation of template code
 
     break;
 }
