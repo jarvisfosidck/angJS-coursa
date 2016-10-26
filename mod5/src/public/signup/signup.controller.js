@@ -3,14 +3,34 @@
 
 angular.module('public')
 .controller('SignUpController', SignUpController);
-console.log('before contrl signup');
 
-SignUpController.$inject = ['myInfoService'];
+SignUpController.$inject = ['myInfoService','allMenuItems','$state'];
 
-function SignUpController(myinfoService) {
+function SignUpController(myInfoService,allMenuItems,$state) {
   var $ctrl = this;
-  $ctrl.UserData = myinfoService.myInfo;
-  $ctrl.signUp = myinfoService.saveInfo;
+
+  $ctrl.shortNames = [];
+  for (var x in allMenuItems.menu_items) {
+      $ctrl.shortNames.push(allMenuItems.menu_items[x].short_name.toLowerCase());
+  }
+  $ctrl.UserData = myInfoService.myInfo;
+  $ctrl.signUp = myInfoService.saveInfo;
+  console.log($ctrl.UserData);
+$ctrl.submitForm = function() {
+    $state.go('public.myinfo'); // tells resolves to refresh
+}
+$ctrl.isShortName = function() {
+    console.log('in sn?');
+    $ctrl.UserData.favorite;
+
+    if ($ctrl.UserData.favorite && $ctrl.shortNames.indexOf($ctrl.UserData.favorite.toLowerCase()) > -1) {
+        return true;
+    }
+    return false;
+
+
+}
+
 }
 
 

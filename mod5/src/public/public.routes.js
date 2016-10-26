@@ -47,7 +47,7 @@ function routeConfig ($stateProvider) {
       controller: 'MyInfoController',
       controllerAs: 'myInfoCtrl',
       resolve: {
-        favoriteItem:  ['MyInfoService', 'MenuService', function (MyInfoService, MenuService) {
+        favorite:  ['MyInfoService', 'MenuService', function (MyInfoService, MenuService) {
               var shortName = MyInfoService.getShortName();
               return MenuService.getByShortName(shortName);
           }],
@@ -64,6 +64,10 @@ function routeConfig ($stateProvider) {
       resolve: {
         myInfoService: ['MyInfoService', function (MyInfoService) {
           return MyInfoService;
+      }],
+        allMenuItems: ['MenuService', function (MenuService) {
+            console.log('menu service all', MenuService);
+          return MenuService.getAllMenuItems();
         }]
       }
     });

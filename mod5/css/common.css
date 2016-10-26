@@ -18,3 +18,13 @@
 .ui-view-placeholder {
     margin-top: 60px;
 }
+
+
+.signupForm legend {
+    color : #fff;
+}
+.signupForm input {
+    width:230px;
+    margin: 4px;
+    color: #000;
+}
