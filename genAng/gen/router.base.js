@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('public')
+angular.module('__ga{{appName}}ag__')
 .config(routeConfig);
 
 /**
@@ -17,7 +17,7 @@ function routeConfig ($stateProvider) {
     })
     .state('public.home', {
       url: '/',
-      templateUrl: 'src/public/home/home.html'
+      templateUrl: 'src/public/index.html'
     })
     __ga{{createdRoutesString}}ag__
 

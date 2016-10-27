@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('public')
+angular.module('newApp')
 .config(routeConfig);
 
 /**
@@ -17,19 +17,48 @@ function routeConfig ($stateProvider) {
     })
     .state('public.home', {
       url: '/',
-      templateUrl: 'src/public/home/home.html'
+      templateUrl: 'src/public/index.html'
     })
-    .state('public.menu', {
-      url: '/menu',
-      templateUrl: 'src/public/menu/menu.html',
-      controller: 'MenuController',
-      controllerAs: 'menuCtrl',
-      resolve: {
-        menuCategories: ['MenuService', function (MenuService) {
-          return MenuService.getCategories();
-        }]
-      }
-    })
-    
+    .state('public.catCollection', {
+  url: '/catCollection',
+  templateUrl: 'src/public/catCollection.html',
+  controller: 'catCollectionController',
+  controllerAs: 'catCollectionCtrl',
+  // resolve: {
+  //   menuCategories: ['MenuService', function (MenuService) {
+  //     return MenuService.getCategories();
+  //   }]
+  // }
+})
+
+//test data
+.state('public.dogCollection', {
+  url: '/dogCollection',
+  templateUrl: 'src/public/dogCollection.html',
+  controller: 'dogCollectionController',
+  controllerAs: 'dogCollectionCtrl',
+  // resolve: {
+  //   menuCategories: ['MenuService', function (MenuService) {
+  //     return MenuService.getCategories();
+  //   }]
+  // }
+})
+
+//test data
+.state('public.birdCollection', {
+  url: '/birdCollection',
+  templateUrl: 'src/public/birdCollection.html',
+  controller: 'birdCollectionController',
+  controllerAs: 'birdCollectionCtrl',
+  // resolve: {
+  //   menuCategories: ['MenuService', function (MenuService) {
+  //     return MenuService.getCategories();
+  //   }]
+  // }
+})
+
+//test data
+
+
 }
 })();
