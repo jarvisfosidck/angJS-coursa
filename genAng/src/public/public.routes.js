@@ -45,11 +45,24 @@ function routeConfig ($stateProvider) {
 })
 
 //test data
-.state('public.birdCollection', {
-  url: '/birdCollection',
-  templateUrl: 'src/public/birdCollection.html',
-  controller: 'birdCollectionController',
-  controllerAs: 'birdCollectionCtrl',
+.state('public.cowCollection', {
+  url: '/cowCollection',
+  templateUrl: 'src/public/cowCollection.html',
+  controller: 'cowCollectionController',
+  controllerAs: 'cowCollectionCtrl',
+  // resolve: {
+  //   menuCategories: ['MenuService', function (MenuService) {
+  //     return MenuService.getCategories();
+  //   }]
+  // }
+})
+
+//test data
+.state('public.foxCollection', {
+  url: '/foxCollection',
+  templateUrl: 'src/public/foxCollection.html',
+  controller: 'foxCollectionController',
+  controllerAs: 'foxCollectionCtrl',
   // resolve: {
   //   menuCategories: ['MenuService', function (MenuService) {
   //     return MenuService.getCategories();

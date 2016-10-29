@@ -6,32 +6,64 @@ angular.module('common')
 
 
 MyInfoService.$inject = ['$http', 'ApiPath'];
-function MyInfoService($http, ApiPath) {
-  var service = this;
-  service.myInfo = {
-      'first_name' : "",
-      'last_name' : "",
-      'email': "",
-      'favorite': "",
-      'phone' : ""
-  };
-  // service.getMyInfoHTTP = function () {
-  //   var response = $http({
-  //     method: "GET",
-  //     url: (ApiBasePath + "/categories.json")
-  //   });
-  //   return response;
-  // };
-
-    service.saveInfo = function() {
-        //if valid contiue to next step
-        console.log('info saved');
-    }
+    function MyInfoService($http, ApiPath) {
+      var service = this;
+      service.myInfo = {
+          'first_name' : "",
+          'last_name' : "",
+          'email': "",
+          'favorite': "",
+          'phone' : "",
+          'completed' : false
+      };
     service.getMyInfo = function() {
+        service.validateInfo();
         return service.myInfo;
     }
     service.getShortName = function() {
         return service.myInfo.favorite;
+    }
+    //if a user edits there profile and it's incomplete
+    //then clicks to leave the view, then returns to the myinfo page
+    //lets make sure their info is still valid
+    service.validateInfo = function() {
+        service.myInfo.completed = true;
+
+        for (var x in service.myInfo) {
+            if (service.checks[x]) {
+                if (!service.checks[x](service.myInfo[x])){
+                    service.myInfo.completed = false;
+                }
+            }
+        }
+    }
+    service.checks = {
+        'first_name' : function(val) {
+            if (val && val.length >= 4) {
+                return true;
+            }
+            return false;
+        },
+        'last_name' : function(val) {
+            if (val && val.length >= 4) {
+                return true;
+            }
+            return false;
+        },
+        'email': function(val) {
+            //not great email check
+            //demo only
+            if (val && /@/.test(val)) {
+                return true;
+            }
+            return false;
+        },
+        'phone' : function(val) {
+            if (/(\d{3})-(\d{3})-(\d{4})/.test(val) || val == "") {
+                return true;
+            }
+            return false;
+        }
     }
 }
 

@@ -54,19 +54,26 @@
             required
             >
             <span
-              ng-if="regForm.phone.$touched && !signupCtrl.isShortName()">
-              Must be an existing short name from the menu.
+              ng-if="regForm.favorite.$touched && !signupCtrl.isShortName()">
+              No such menu item exists.
             </span>
 
             <br>
 
-        <button
-        ng-disabled="regForm.$invalid"
+        <button class="signupButton"
+        ng-disabled="(!signupCtrl.isShortName() || !regForm.$valid)"
           ng-click="signupCtrl.submitForm()">Submit</button>
 
-          <div style="margin-top: 10px;">
-           Form valid? {{ regForm.$valid }}
-         </div>
+
+          <div id="info" ng-if="!regForm.$invalid && signupCtrl.isShortName()">
+              Username: {{signupCtrl.UserData.first_name}} {{signupCtrl.UserData.last_name}} <br>
+              Email: {{ signupCtrl.UserData.email}} <br>
+              Phone: {{ signupCtrl.UserData.phone }} <br />
+              Favorite: {{ signupCtrl.UserData.favorite }}
+            </div>
+
       </form>
+
+
     </fieldset>
 </div>

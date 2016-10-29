@@ -49,7 +49,7 @@ function routeConfig ($stateProvider) {
       resolve: {
         favorite:  ['MyInfoService', 'MenuService', function (MyInfoService, MenuService) {
               var shortName = MyInfoService.getShortName();
-              return MenuService.getByShortName(shortName);
+             return MenuService.getByShortName(shortName);
           }],
           myInfo: ['MyInfoService', function (MyInfoService) {
             return MyInfoService.getMyInfo();
@@ -66,7 +66,6 @@ function routeConfig ($stateProvider) {
           return MyInfoService;
       }],
         allMenuItems: ['MenuService', function (MenuService) {
-            console.log('menu service all', MenuService);
           return MenuService.getAllMenuItems();
         }]
       }

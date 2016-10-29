@@ -28,3 +28,7 @@
     margin: 4px;
     color: #000;
 }
+.signupButton {
+    background-color: #222;
+    border:1px solid green;
+}
