@@ -12,13 +12,28 @@ function SignUpController(myInfoService,allMenuItems,$state) {
     for (var x in allMenuItems.menu_items) {
       $ctrl.shortNames.push(allMenuItems.menu_items[x].short_name.toLowerCase());
     }
-    $ctrl.UserData = myInfoService.myInfo;
+    $ctrl.SaveMessage = "";
+    $ctrl.UserData = {
+        'first_name' : "",
+        'last_name' : "",
+        'email': "",
+        'favorite': "",
+        'phone' : "",
+        'completed' : false
+    };
     $ctrl.signUp = myInfoService.saveInfo;
     $ctrl.submitForm = function() {
-        //allow user to enter lowercase even though only uppercase works with the AJAX
-        $ctrl.UserData.favorite = $ctrl.UserData.favorite.toUpperCase();
-        $ctrl.UserData.hasUserData = true;
-        $state.go('public.myinfo'); // tells resolves to refresh
+        console.log(myInfoService.setMyInfo($ctrl.UserData));
+        if (myInfoService.setMyInfo($ctrl.UserData)) {
+            //allow user to enter lowercase even though only uppercase works with the AJAX
+            $ctrl.UserData.favorite = $ctrl.UserData.favorite.toUpperCase();
+            $ctrl.UserData.hasUserData = true;
+            $ctrl.SaveMessage = "Your Information Has Been Saved";
+
+            //I created the option to go to the myinfo page after clicking
+            //submit
+            //$state.go('public.myinfo'); // tells resolves to refresh
+        }
 
     }
     $ctrl.isShortName = function() {

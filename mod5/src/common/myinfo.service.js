@@ -20,15 +20,24 @@ MyInfoService.$inject = ['$http', 'ApiPath'];
         service.validateInfo();
         return service.myInfo;
     }
+    service.setMyInfo = function(obj) {
+        var tmp = service.myInfo;
+        service.myInfo = obj;
+        service.validateInfo();
+        if (service.myInfo.completed) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     service.getShortName = function() {
         return service.myInfo.favorite;
     }
-    //if a user edits there profile and it's incomplete
+    //if a user edits their profile and it's incomplete
     //then clicks to leave the view, then returns to the myinfo page
     //lets make sure their info is still valid
     service.validateInfo = function() {
         service.myInfo.completed = true;
-
         for (var x in service.myInfo) {
             if (service.checks[x]) {
                 if (!service.checks[x](service.myInfo[x])){
@@ -66,6 +75,4 @@ MyInfoService.$inject = ['$http', 'ApiPath'];
         }
     }
 }
-
-
 })();
